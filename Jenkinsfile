@@ -1,31 +1,6 @@
 jenkins:
   systemMessage: "Jenkins Configuration as Code"
 
-  plugins:
-    - github
-    - gitlab
-    - docker-workflow
-    - kubernetes
-
-  securityRealm:
-    local:
-      allowsSignup: false
-       users:
-          id: "admin"
-          password: "admin"
-    
-  authorizationStrategy:
-    globalMatrix:
-      permissions:
-        - "Overall/Administer:admin"
-        - "Job/Build:anonymous"
-    
-  globalNodeProperties:
-     environmentVariables:
-         env:
-            key: "GIT_HASH"
-            value: "${GIT_COMMIT}"
-
   pipelines:
      script: 
         pipeline {
